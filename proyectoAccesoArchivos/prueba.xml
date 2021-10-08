@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="utf8" standalone="yes"?>
-<user>
-    <nickname>Pepe</nickname>
-</user>
+<roomlist>
+    <room>
+        <name>Sala 2</name>
+        <users>
+            <nickname>Maria</nickname>
+        </users>
+    </room>
+    <room>
+        <name>Sala 1</name>
+        <users>
+            <nickname>alvaro</nickname>
+        </users>
+        <users>
+            <nickname>Nicolas</nickname>
+        </users>
+        <users>
+            <nickname>Pepe</nickname>
+        </users>
+        <messages>
+            <date>2021-10-08T09:33:31.692608</date>
+            <u>
+                <nickname>alvaro</nickname>
+            </u>
+            <text>adios</text>
+        </messages>
+    </room>
+</roomlist>

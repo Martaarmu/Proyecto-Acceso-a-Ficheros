@@ -1,26 +1,37 @@
 package model;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlRootElement;
-import jakarta.xml.bind.annotation.XmlAccessType;
-
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name="room")
-public class Room implements Serializable {
-	
+public class Room  implements Serializable{
 	private static final long serialVersionUID = 1L;
-	
+
 	private String name;
-	private ArrayList<User> users;
+	private Set<User> users;
 	private ArrayList<Message> messages;
-	
+
 	public Room() {}
+	public Room(String name) {
+		this.name = name;
+	}
 	
-	public Room(String name, ArrayList<User> users, ArrayList<Message> messages) {
-		super();
+	public Room(String name, Set<User>users) {
+		this.name = name;
+		this.users=users;
+	}
+
+	public Room(String name, Set<User> users, ArrayList<Message> messages) {
 		this.name = name;
 		this.users = users;
 		this.messages = messages;
@@ -34,11 +45,11 @@ public class Room implements Serializable {
 		this.name = name;
 	}
 
-	public ArrayList<User> getUsers() {
+	public Set<User> getUsers() {
 		return users;
 	}
 
-	public void setUsers(ArrayList<User> users) {
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
 
@@ -49,10 +60,23 @@ public class Room implements Serializable {
 	public void setMessages(ArrayList<Message> messages) {
 		this.messages = messages;
 	}
+	public void addUser(User newUser) {
+		this.users.add(newUser);
+	}
+	public boolean existUser(User nickname) {
+
+		boolean result = false;
+		for (User u : users) {
+			if (u != null && u.getNickname().equals(nickname)) {
+				result = true;
+			}
+		}
+		return result;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Room [name=" + name + ", users=" + users + ", messages=" + messages + "]";
+		return "\n" + name + "\nUsuarios:" + users + "\nMensajes:" + messages+"\n";
 	}
-	
 }
