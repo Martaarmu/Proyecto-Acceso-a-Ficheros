@@ -63,11 +63,9 @@ public class Ejecutable2 {
 					switch (opcion1) {
 					case 0:
 						System.out.println("Hasta luego!");
-						//r.deleteU(nickname);
 						users.remove(u);
 						r.setUsers(users);
 						rl.setRooms(roomlist);
-						System.out.println(users);
 						break;
 					default:
 						m = writeMessage(u, date);
