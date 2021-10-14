@@ -86,7 +86,9 @@ public class Ejecutable2 {
 
 	}
 	
-	
+	/**
+	* Método que carga el XML cada 8s
+	*/
 	public static void refresh() {
 		Timer t = new Timer();
 		t.schedule(new TimerTask() {
@@ -97,7 +99,9 @@ public class Ejecutable2 {
 			}
 		}, 0, 8000);
 	}
-	
+	/**
+	* Método que guarda en XML
+	*/
 	public static void save() {
 		try {
 			JAXBManager.marshal(rl, f);
@@ -110,7 +114,11 @@ public class Ejecutable2 {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	* Método que permite escribir un mensaje
+	* @param u, date
+	* @return Menssage
+	*/
 	public static Message writeMessage(User u, LocalDateTime date) {
 		Message m = new Message();
 		String text = "";
