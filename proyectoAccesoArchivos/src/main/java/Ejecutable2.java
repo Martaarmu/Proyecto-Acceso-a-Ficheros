@@ -25,7 +25,8 @@ public class Ejecutable2 {
 	public static void main(final String[] args) {
 		Message m = new Message();
 		String nickname = "";
-		System.out.println("Inserte nickname: ");
+		System.out.println("** Bienvenido al Chat Vintage:                 **");
+		System.out.println("** Inserte su nickname para entrar en la sala: **");
 		nickname = Utilities.getString();
 		rl = JAXBManager.unmarshal(f);
 		Set<Room> roomlist = rl.getRooms();
@@ -37,8 +38,9 @@ public class Ejecutable2 {
 				Set<User> users = r.getUsers();
 				users.add(u);
 				r.addUser(u);
+				System.out.println("Los usuarios conectados son:");
 				System.out.println(r.getUsers());
-				System.out.println(r.getMessages());
+			//	System.out.println(r.getMessages());
 				
 				save();
 				refresh();
@@ -48,12 +50,12 @@ public class Ejecutable2 {
 				r.addMessage(m);
 				int opcion1 = -1;
 				do {
-					System.out.println("Quieres escribir otro mensaje? Pulsa 1");
-					System.out.println("Pulsa 0 para salir...");
+					System.out.println("Para escribir un nuevo mensaje pulse: 1");
+	                System.out.println("Para salir del chat pulse: 0");
 					opcion1 = Utilities.getInt();
 					switch (opcion1) {
 					case 0:
-						System.out.println("Hasta luego!");
+						System.out.println("Has salido del chat.");
 
 					for(User j:users) {
 							if(j.getNickname().equals(u.getNickname())) {
