@@ -19,7 +19,7 @@ import utils.JAXBManager;
 import utils.Utilities;
 
 public class Ejecutable2 {
-	public static File f = new File("C:\\Users\\marta\\Desktop\\prueba1.xml");
+	public static File f = new File("prueba1.xml");
 	public static RoomList rl = JAXBManager.unmarshal(f);
 
 	public static void main(final String[] args) {
@@ -27,19 +27,25 @@ public class Ejecutable2 {
 		String nickname = "";
 		System.out.println("Inserte nickname: ");
 		nickname = Utilities.getString();
-		User u = new User(nickname);
 		rl = JAXBManager.unmarshal(f);
 		Set<Room> roomlist = rl.getRooms();
-		for (final Room r : roomlist) {
+		for ( Room r : roomlist) {
 			if (r.getName().equals("Sala 1")) {
+				User u = new User(nickname);
+				for(User usuario_xml:r.getUsers()){
+                    if(usuario_xml.getNickname().equals(u.getNickname())){
+                        u=usuario_xml;
+                        break;
+                    }
+			}
+				
+				
 				Set<User> users = r.getUsers();
 				users.add(u);
 				r.addUser(u);
 				System.out.println(r.getUsers());
 				System.out.println(r.getMessages());
-				LocalDateTime date = LocalDateTime.now();
-				m = writeMessage(u, date);
-				r.addMessage(m);
+				
 				try {
 					JAXBManager.marshal(rl, f);
 				} catch (IOException e) {
@@ -55,6 +61,9 @@ public class Ejecutable2 {
 						System.out.println(rl);
 					}
 				}, 0, 8000);
+				LocalDateTime date = LocalDateTime.now();
+				m = writeMessage(u, date);
+				r.addMessage(m);
 				int opcion1 = -1;
 				do {
 					System.out.println("Quieres escribir otro mensaje? Pulsa 1");
@@ -66,8 +75,9 @@ public class Ejecutable2 {
 
 					for(User j:users) {
 							if(j.getNickname().equals(u.getNickname())) {
-								users.remove(u);
-								r.deleteUser(u);
+								//users.remove(u);
+								//r.deleteUser(u);
+								r.getUsers().remove(j);
 								break;
 							}
 						}
