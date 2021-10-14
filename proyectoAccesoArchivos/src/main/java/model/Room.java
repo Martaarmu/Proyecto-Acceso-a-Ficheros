@@ -75,6 +75,6 @@ public class Room  implements Serializable{
 
 	@Override
 	public String toString() {
-		return "\n*** " + name + "\n*** USUARIOS:" + users + "\nMensajes:" + messages+"\n";
+		return "USUARIOS:\n" + users + "\nMENSAJES:\n" + messages;
 	}
 }
