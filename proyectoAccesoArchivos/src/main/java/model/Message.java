@@ -53,7 +53,7 @@ public class Message implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Fecha: " + date + " Usuario: " + u + " Texto: " + text +"\n";
+		return "Usuario: " + u + " --- Mensaje: " + text +" --- Fecha: " + date+"\n";
 	}
 	
 	
