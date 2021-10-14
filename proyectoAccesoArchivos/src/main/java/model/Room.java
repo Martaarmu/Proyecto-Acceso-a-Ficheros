@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.xml.bind.JAXBContext;
@@ -12,6 +13,8 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name="room")
 public class Room  implements Serializable{
@@ -19,7 +22,7 @@ public class Room  implements Serializable{
 
 	private String name;
 	private Set<User> users;
-	private ArrayList<Message> messages;
+	private ArrayList<Message> messages=new ArrayList<>();
 
 	public Room() {}
 	public Room(String name) {
@@ -61,22 +64,17 @@ public class Room  implements Serializable{
 		this.messages = messages;
 	}
 	public void addUser(User newUser) {
-		this.users.add(newUser);
+		users.add(newUser);
 	}
-	public boolean existUser(User nickname) {
-
-		boolean result = false;
-		for (User u : users) {
-			if (u != null && u.getNickname().equals(nickname)) {
-				result = true;
-			}
-		}
-		return result;
+	public void addMessage(Message newMessage) {
+		messages.add(newMessage);
 	}
-
+	public void deleteUser(User u) {
+		users.remove(u);
+	}
 
 	@Override
 	public String toString() {
-		return "\n" + name + "\nUsuarios:" + users + "\nMensajes:" + messages+"\n";
+		return "\n*** " + name + "\n*** USUARIOS:" + users + "\nMensajes:" + messages+"\n";
 	}
 }

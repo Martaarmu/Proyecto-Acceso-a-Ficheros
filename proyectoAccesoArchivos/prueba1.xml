@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf8" standalone="yes"?>
+<roomlist>
+    <room>
+        <name>Sala 1</name>
+        <users>
+            <nickname>LUCIA</nickname>
+        </users>
+        <messages>
+            <date>2021-10-13T20:50:07.750523200</date>
+            <u>
+                <nickname>juan</nickname>
+            </u>
+            <text>adios</text>
+        </messages>
+        <messages>
+            <date>2021-10-13T20:53:53.568446900</date>
+            <u>
+                <nickname>Borro</nickname>
+            </u>
+            <text>m borro ya</text>
+        </messages>
+    </room>
+</roomlist>

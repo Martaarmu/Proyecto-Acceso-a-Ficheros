@@ -19,7 +19,7 @@ import utils.JAXBManager;
 import utils.Utilities;
 
 public class Ejecutable2 {
-	public static File f = new File("prueba1.xml");
+	public static File f = new File("C:\\Users\\marta\\Desktop\\prueba1.xml");
 	public static RoomList rl = JAXBManager.unmarshal(f);
 
 	public static void main(final String[] args) {
@@ -63,13 +63,7 @@ public class Ejecutable2 {
 					switch (opcion1) {
 					case 0:
 						System.out.println("Hasta luego!");
-						
-						
-					
-						//users.remove(u);
-						//r.setUsers(users);
-						
-						//r.setUsers(users);
+
 					for(User j:users) {
 							if(j.getNickname().equals(u.getNickname())) {
 								users.remove(u);

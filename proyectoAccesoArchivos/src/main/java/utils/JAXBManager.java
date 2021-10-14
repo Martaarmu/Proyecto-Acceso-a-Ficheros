@@ -40,7 +40,7 @@ public class JAXBManager {
 				jaxbContext = JAXBContext.newInstance(RoomList.class);
 				Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 				rl = (RoomList) jaxbUnmarshaller.unmarshal(f);
-				//r= newR.r;
+				//rl= newR.rl;
 			} catch (JAXBException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

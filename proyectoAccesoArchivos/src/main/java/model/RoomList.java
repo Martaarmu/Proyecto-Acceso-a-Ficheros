@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -17,7 +18,7 @@ public class RoomList implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	@XmlElement(name="room",type=Room.class)
-	private Set<Room> rooms;
+	private Set<Room> rooms=new HashSet<Room>();
 	
 	public RoomList() {}
 	
@@ -37,12 +38,12 @@ public class RoomList implements Serializable{
 	}
 	
 	public void addRoom(Room newRoom) {
-		this.rooms.add(newRoom);
+		rooms.add(newRoom);
 	}
 
 	@Override
 	public String toString() {
-		return "SALAS:\n"+rooms;
+		return "\n"+rooms;
 	}
 
 	
