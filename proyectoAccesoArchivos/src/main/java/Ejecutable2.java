@@ -40,7 +40,7 @@ public class Ejecutable2 {
 				r.addUser(u);
 				System.out.println("Los usuarios conectados son:");
 				System.out.println(r.getUsers());
-			//	System.out.println(r.getMessages());
+			
 				
 				save();
 				refresh();
