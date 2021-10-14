@@ -33,7 +33,7 @@ public class Ejecutable2 {
 		for (final Room r : roomlist) {
 			if (r.getName().equals("Sala 1")) {
 				Set<User> users = r.getUsers();
-
+				users.add(u);
 				r.addUser(u);
 				System.out.println(r.getUsers());
 				System.out.println(r.getMessages());
@@ -63,9 +63,22 @@ public class Ejecutable2 {
 					switch (opcion1) {
 					case 0:
 						System.out.println("Hasta luego!");
-						users.remove(u);
-						r.setUsers(users);
-						rl.setRooms(roomlist);
+						
+						
+					
+						//users.remove(u);
+						//r.setUsers(users);
+						
+						//r.setUsers(users);
+					for(User j:users) {
+							if(j.getNickname().equals(u.getNickname())) {
+								users.remove(u);
+								r.deleteUser(u);
+								break;
+							}
+						}
+					rl.setRooms(roomlist);
+						
 						break;
 					default:
 						m = writeMessage(u, date);
@@ -77,6 +90,9 @@ public class Ejecutable2 {
 
 			}
 		}
+		
+		
+		
 		try {
 			JAXBManager.marshal(rl, f);
 
@@ -87,6 +103,7 @@ public class Ejecutable2 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 
 		System.exit(0);
 
