@@ -29,16 +29,10 @@ public class Ejecutable2 {
 		nickname = Utilities.getString();
 		rl = JAXBManager.unmarshal(f);
 		Set<Room> roomlist = rl.getRooms();
+		
 		for ( Room r : roomlist) {
 			if (r.getName().equals("Sala 1")) {
 				User u = new User(nickname);
-				for(User usuario_xml:r.getUsers()){
-                    if(usuario_xml.getNickname().equals(u.getNickname())){
-                        u=usuario_xml;
-                        break;
-                    }
-			}
-				
 				
 				Set<User> users = r.getUsers();
 				users.add(u);
@@ -46,21 +40,9 @@ public class Ejecutable2 {
 				System.out.println(r.getUsers());
 				System.out.println(r.getMessages());
 				
-				try {
-					JAXBManager.marshal(rl, f);
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (JAXBException e2) {
-					e2.printStackTrace();
-				}
-				Timer t = new Timer();
-				t.schedule(new TimerTask() {
-					@Override
-					public void run() {
-						rl = JAXBManager.unmarshal(f);
-						System.out.println(rl);
-					}
-				}, 0, 8000);
+				save();
+				refresh();
+				
 				LocalDateTime date = LocalDateTime.now();
 				m = writeMessage(u, date);
 				r.addMessage(m);
@@ -75,8 +57,6 @@ public class Ejecutable2 {
 
 					for(User j:users) {
 							if(j.getNickname().equals(u.getNickname())) {
-								//users.remove(u);
-								//r.deleteUser(u);
 								r.getUsers().remove(j);
 								break;
 							}
@@ -97,6 +77,26 @@ public class Ejecutable2 {
 		
 		
 		
+		save();
+		
+
+		System.exit(0);
+
+	}
+	
+	
+	public static void refresh() {
+		Timer t = new Timer();
+		t.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				rl = JAXBManager.unmarshal(f);
+				System.out.println(rl);
+			}
+		}, 0, 8000);
+	}
+	
+	public static void save() {
 		try {
 			JAXBManager.marshal(rl, f);
 
@@ -107,12 +107,8 @@ public class Ejecutable2 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-
-		System.exit(0);
-
 	}
-
+	
 	public static Message writeMessage(User u, LocalDateTime date) {
 		Message m = new Message();
 		String text = "";
